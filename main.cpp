@@ -4,6 +4,7 @@
 #include <GL/glu.h>
 #include <cstdlib>
 
+void drawTriangle();
 
 int main()
 {
@@ -48,6 +49,24 @@ int main()
     glMatrixMode(GL_MODELVIEW);
     gluLookAt(2, 2, 2, 0, 0, 0, 0, 1, 0);
 
+    //draws a triangle
+    drawTriangle();
+
     SDL_GL_SwapWindow(window);
     SDL_Delay(10000); //keeps window open; delays closing
+}
+
+void drawTriangle()
+{
+    //tab in - easier to follow code
+    glPushMatrix();
+        glBegin(GL_TRIANGLES);
+            glColor3f(1.0f, 0.0f, 0.0f);
+            glVertex3f(0.0f, 1.0f, 0.0f);
+            glColor3f(0.0f, 1.0f, 0.0f);
+            glVertex3f(1.0f, -1.0f, 0.0f);
+            glColor3f(0.0f, 0.0f, 1.0f);
+            glVertex3f(-1.0f, -1.0f, 0.0f);
+        glEnd();
+    glPopMatrix();
 }
